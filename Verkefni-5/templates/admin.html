@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block titill %}Admin{% endblock %}
+{% block innihald %}
+{% include "header.html" %}
+
+<section class="container my-4">
+  <h2>Blog Dashboard</h2>
+  <a href="{{ url_for('gerablog') }}" class="btn btn-primary mb-3">Gera Blog</a>
+  
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Titill</th>
+        <th>Flokkar</th>
+        <th>Dagsetning</th>
+        <th>Aðgerðir</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for blog in blogs %}
+      <tr>
+        <td>{{ blog.id }}</td>
+        <td>{{ blog.title }}</td>
+        <td>{{ blog.category }}</td>
+        <td>{{ blog.date }}</td>
+        <td>
+          <a href="{{ url_for('uppfearablog', blog_id=blog.id) }}" class="btn btn-warning btn-sm">Uppfæra</a>
+          <a href="{{ url_for('eyðablog', blog_id=blog.id) }}" class="btn btn-danger btn-sm">Eyða</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+
+{% include "footer.html" %}
+{% endblock %}

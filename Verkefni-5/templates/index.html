@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block titll %}Heim{% endblock %}
+{% block innihald %}
+{% include "header.html" %}
+
+<h1>Pokémon TCG Sets</h1>
+<div class="grid">
+    {% for s in sets %}
+    <div class="set">
+        <a href="{{ url_for('sets', set_id=s.id) }}">
+            <img src="{{ s.images.symbol }}" alt="{{ s.name }} symbol">
+            <p>{{ s.name }}</p>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+
+{% include "footer.html" %}
+{% endblock %}

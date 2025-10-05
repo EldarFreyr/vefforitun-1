@@ -1,0 +1,17 @@
+
+{% extends "base.html" %}
+{% block titll %}Set{% endblock %}
+{% block innihald %}
+{% include "header.html" %}
+
+{% set hluti = set.releaseDate.split('/') %}
+
+    <h1>{{ set.name }}</h1>
+    <p><b>Release Date: {{ hluti[2] }}-{{ hluti[1] }}-{{ hluti[0] }}</b>
+    <p><b>Total Cards:</b> {{ set.total }}</p>
+    <p><b>Series:</b> {{ set.series }}</p>
+    <img src="{{ set.images.logo }}" alt="{{ set.name }} logo">
+
+{% include "footer.html" %}
+{% endblock %}
+

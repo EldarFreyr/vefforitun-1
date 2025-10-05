@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block titill %}Blog{% endblock %}
+{% block innihald %}
+{% include "header.html" %}
+
+<h1 class="mb-4">All Blog Posts</h1>
+
+<div class="blogs">
+  {% for b in blogs|reverse %}
+    <div class="card mb-4 shadow-sm p-3">
+      <div class="card-body">
+        <h2 class="card-title">{{ b.title }}</h2>
+        <p><b>Flokkur:</b> {{ b.category }}</p>
+        <p><b>Dagsetning:</b> {{ b.date }}</p>
+        <p><b>Höfundur:</b> {{ b.notandi if b.notandi else "Unknown" }}</p>
+
+        {% if b.image %}
+          <img src="{{ url_for('static', filename='myndir/' ~ b.image) }}"
+               alt="{{ b.title }}"
+               class="img-fluid mb-3 rounded">
+        {% endif %}
+
+        <p class="card-text">{{ b.content|safe }}</p>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+{% include "footer.html" %}
+{% endblock %}

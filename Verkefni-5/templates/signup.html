@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block titill %}Signup{% endblock %}
+{% block innihald %}
+{% include "header.html" %}
+
+<h2>Nýskráning</h2>
+<form method="POST">
+    <input type="email" name="email" placeholder="Netfang" required><br>
+    <input type="password" name="password" placeholder="Lykilorð" required><br>
+    <button type="submit">Nýskrá</button>
+</form>
+
+{% include "footer.html" %}
+{% endblock %}
+
+
+
+

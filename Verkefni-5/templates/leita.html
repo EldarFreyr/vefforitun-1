@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block titll %}Heim{% endblock %}
+{% block innihald %}
+{% include "header.html" %}
+
+        <div class="pokemon_border">
+            {% for i in pokemons %}
+                <div>
+                    <a href="{{ url_for('card', cardid=i.id) }}">{{ i.name }}</a>
+                    <img src="{{ i.images.small }}" alt="{{ i.name }}">
+                </div>
+            {% endfor %}
+        </div>
+
+{% include "footer.html" %}
+{% endblock %}
+
+

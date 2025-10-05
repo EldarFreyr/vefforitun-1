@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block titill %}Update Blog{% endblock %}
+{% block innihald %}
+{% include "header.html" %}
+
+<h2>Update Blog Post</h2>
+<form method="POST">
+  <div class="form-group mb-3">
+    <label>Title</label>
+    <input type="text" name="title" class="form-control" value="{{ blog.title }}" required>
+  </div>
+
+  <div class="form-group mb-3">
+    <label>Content</label>
+    {{ ckeditor.create(name='content', value=blog.content) }}
+  </div>
+
+  <div class="form-group mb-3">
+    <label>Category</label>
+    <select name="category" class="form-control">
+      <option value="General" {% if blog.category == "General" %}selected{% endif %}>General</option>
+      <option value="News" {% if blog.category == "News" %}selected{% endif %}>News</option>
+      <option value="Events" {% if blog.category == "Events" %}selected{% endif %}>Events</option>
+    </select>
+  </div>
+
+  <div class="form-group mb-3">
+    <label>Höfundur</label>
+    <input type="text" name="notandi" class="form-control" value="{{ blog.notandi }}" required>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Update</button>
+</form>
+
+{% include "footer.html" %}
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block titll %}Heim{% endblock %}
+{% block innihald %}
+{% include "header.html" %}
+
+<h1>{{ pokemon.name }}</h1>
+<img src="{{ pokemon.images.large }}" alt="{{ pokemon.name }}">
+
+<p><strong>Subtype:</strong> {{ pokemon.subtypes|join(', ') }}</p>
+<p><strong>HP:</strong> {{ pokemon.hp }}</p>
+<p><strong>Types:</strong> {{ pokemon.types|join(', ') }}</p>
+<p><strong>Rarity:</strong> {{ pokemon.rarity }}</p>
+<p><strong>Set:</strong> {{ pokemon.set.name }}</p>
+
+
+{% include "footer.html" %}
+{% endblock %}

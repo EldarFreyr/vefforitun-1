@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block titill %}Búa til blog{% endblock %}
+{% block innihald %}
+{% include "header.html" %}
+
+<h2>Búa til bloggfærslu</h2>
+
+<form action="{{ url_for('gerablog') }}" method="POST" enctype="multipart/form-data">
+    
+    <div class="form-group mb-3">
+        <label for="title">Titill</label>
+        <input type="text" name="title" id="title" class="form-control" required>
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="content">Efni</label>
+        {{ ckeditor.create(name='content') }}
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="category">Flokkur</label>
+        <select name="category" id="category" class="form-control">
+            <option value="General">Alment</option>
+            <option value="News">Nýtt</option>
+            <option value="Events">Atburðir</option>
+        </select>
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="image">Mynd</label>
+        <input type="file" name="image" id="image" class="form-control">
+        <!-- Enginn preview, skráin sendist til Flask -->
+    </div>
+
+    <button type="submit" class="btn btn-primary">Vista</button>
+</form>
+
+{% include "footer.html" %}
+{% endblock %}
